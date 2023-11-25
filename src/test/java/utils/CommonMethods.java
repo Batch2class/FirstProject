@@ -4,10 +4,13 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class CommonMethods {
+public class  CommonMethods {
+
     public static WebDriver driver;
     @BeforeMethod(alwaysRun = true)
     public static void setUp(){
@@ -16,13 +19,13 @@ public class CommonMethods {
         switch (ConfigReader.getPropertiesValue("browser")){
 
             case "chrome":
-                //  System.setProperty("webdriver.chrome.driver", "Drivers/chromedriver.exe");
+                //System.setProperty("webdriver.chrome.driver", "Drivers/chromedriver.exe");
                 WebDriverManager.chromedriver().setup();
                 driver=new ChromeDriver();
                 break;
 
             case "firefox":
-                //  System.setProperty("webdriver.gecko.driver", "Drivers/geckodriver.exe");
+                //System.setProperty("webdriver.gecko.driver", "Drivers/geckodriver.exe");
                 WebDriverManager.firefoxdriver().setup();
                 driver=new FirefoxDriver();
                 break;
@@ -36,9 +39,11 @@ public class CommonMethods {
     }
 
 
-    @AfterMethod(alwaysRun = true)
+    //@AfterMethod(alwaysRun = true)
     public static void closeBrowser(){
         driver.quit();
     }
+
+
 
 }

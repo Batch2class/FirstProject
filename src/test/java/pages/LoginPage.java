@@ -17,9 +17,6 @@ import utils.CommonMethods;
         @FindBy(xpath = "//input[@class='login']")
         public WebElement submitBtn;
 
-        @FindBy(xpath = "/html/body/div/div/div/form/h4")
-        public WebElement errorMessage;
-
         public LoginPage (){
             PageFactory.initElements(driver, this);
         }
